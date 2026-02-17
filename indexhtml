@@ -1,299 +1,283 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greenland Box - Votre pause rapide, 100% healthy</title>
+    <meta name="description" content="Greenland Box - Restauration saine et rapide au Maroc. Découvrez nos healthy box pour salariés et étudiants.">
+    <title>Greenland Box | Votre pause 100% Healthy</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        :root {
+            --green-dark: #2D5A27;
+            --green-light: #4ade80;
+        }
+        body { font-family: 'Poppins', sans-serif; }
+        h1, h2 { font-family: 'Playfair Display', serif; }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
         .hero-bg {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
         }
-        .green-gradient { background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%); }
-        .cart-badge {
-            position: absolute;
-            top: -5px;
-            right: -10px;
-            background: #ef4444;
-            color: white;
-            border-radius: 50%;
-            padding: 2px 6px;
-            font-size: 10px;
-            font-weight: bold;
+
+        .card-scale {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-scale:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background-color: var(--green-dark);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #1e3d1a;
+            transform: scale(1.05);
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-slate-50">
 
-    <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">GB</div>
-                <span class="text-2xl font-bold text-green-600">Greenland Box</span>
-            </div>
-            
-            <!-- Menu Desktop -->
-            <div class="hidden md:flex space-x-8 font-medium items-center">
-                <a href="#accueil" class="hover:text-green-500 transition">Accueil</a>
-                <a href="#concept" class="hover:text-green-500 transition">Concept</a>
-                <a href="#menu" class="hover:text-green-500 transition">Nos Box</a>
-                <a href="#abonnements" class="hover:text-green-500 transition">Abonnements</a>
-                <div class="relative cursor-pointer mr-4" id="cart-icon">
-                    <i class="fas fa-shopping-basket text-xl text-gray-600"></i>
-                    <span id="cart-count" class="cart-badge">0</span>
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold tracking-tighter text-[#2D5A27]">
+                        GREENLAND<span class="text-slate-900">BOX</span>
+                    </a>
                 </div>
-                <a href="#contact" class="bg-green-600 text-white px-5 py-2 rounded-full hover:bg-green-700 transition">Commander</a>
+                <div class="hidden md:flex space-x-10 text-sm font-semibold uppercase tracking-wider">
+                    <a href="#accueil" class="text-slate-600 hover:text-green-700">Accueil</a>
+                    <a href="#concept" class="text-slate-600 hover:text-green-700">Concept</a>
+                    <a href="#menu" class="text-slate-600 hover:text-green-700">Nos Box</a>
+                    <a href="#impact" class="text-slate-600 hover:text-green-700">Impact</a>
+                    <a href="#contact" class="btn-primary text-white px-6 py-2 rounded-full shadow-lg">Commander</a>
+                </div>
             </div>
-
-            <!-- Bouton Mobile -->
-            <button id="menu-btn" class="md:hidden text-2xl text-green-600 focus:outline-none">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-
-        <!-- Menu Mobile Overlay -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 flex flex-col p-4 space-y-4 shadow-lg">
-            <a href="#accueil" class="mobile-link font-medium">Accueil</a>
-            <a href="#concept" class="mobile-link font-medium">Concept</a>
-            <a href="#menu" class="mobile-link font-medium">Nos Box</a>
-            <a href="#abonnements" class="mobile-link font-medium">Abonnements</a>
-            <a href="#contact" class="mobile-link font-bold text-green-600">Commander</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header id="accueil" class="hero-bg h-[80vh] flex items-center justify-center text-center text-white px-4">
-        <div class="max-w-3xl">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Mangez Sain, Vivez Mieux.</h1>
-            <p class="text-xl md:text-2xl mb-8 font-light italic">"Votre pause rapide, 100% healthy"</p>
-            <div class="flex flex-col md:flex-row justify-center gap-4">
-                <button onclick="scrollToId('menu')" class="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-bold text-lg transition transform hover:scale-105">Découvrir nos Box</button>
-                <button onclick="scrollToId('concept')" class="bg-white hover:bg-gray-100 text-green-600 px-8 py-3 rounded-full font-bold text-lg transition transform hover:scale-105">Notre Concept</button>
+    <section id="accueil" class="hero-bg h-screen flex items-center justify-center text-white px-4">
+        <div class="max-w-4xl text-center">
+            <h1 class="text-5xl md:text-8xl font-bold mb-6 leading-tight">Mangez Frais, <br>Mangez Vrai.</h1>
+            <p class="text-xl md:text-2xl mb-10 font-light opacity-90 italic">"Votre pause rapide, 100% healthy"</p>
+            <div class="flex flex-col sm:row gap-5 justify-center">
+                <a href="#menu" class="bg-white text-[#2D5A27] px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:bg-green-50 transition">Découvrir le menu</a>
+                <a href="#contact" class="border-2 border-white/40 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white/10 backdrop-blur-sm transition">Nous contacter</a>
             </div>
         </div>
-    </header>
+    </section>
 
-    <!-- À Propos / Concept -->
-    <section id="concept" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
+    <!-- Section Concept -->
+    <section id="concept" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">L'entreprise Greenland Box</h2>
-                <div class="w-20 h-1 bg-green-500 mx-auto"></div>
+                <h2 class="text-4xl font-bold text-slate-900 mb-4">La Révolution Healthy au Maroc</h2>
+                <div class="w-20 h-1.5 bg-green-500 mx-auto rounded-full"></div>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h3 class="text-2xl font-semibold mb-4 text-green-600">Notre Mission</h3>
-                    <p class="text-gray-600 leading-relaxed mb-6">
-                        Greenland Box est une entreprise marocaine spécialisée dans la restauration healthy. 
-                        Nous proposons des box repas saines et pratiques, préparées avec des ingrédients frais et équilibrés.
-                    </p>
-                    <div class="space-y-4">
-                        <div class="flex items-start">
-                            <i class="fas fa-leaf text-green-500 mt-1 mr-3"></i>
-                            <p><strong>Fraîcheur :</strong> Ingrédients locaux et de saison.</p>
-                        </div>
-                        <div class="flex items-start">
-                            <i class="fas fa-recycle text-green-500 mt-1 mr-3"></i>
-                            <p><strong>Écologique :</strong> Emballages recyclables.</p>
-                        </div>
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1543353071-873f17a7a088?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Plat sain préparé" class="rounded-[2rem] shadow-2xl">
+                    <div class="absolute -bottom-8 -right-8 bg-[#2D5A27] text-white p-8 rounded-2xl hidden md:block max-w-xs shadow-xl">
+                        <i class="fa-solid fa-quote-left text-3xl mb-4 opacity-50"></i>
+                        <p class="italic text-sm">"Notre mission est d'offrir des repas nutritifs et savoureux tout en respectant l’environnement."</p>
                     </div>
                 </div>
-                <div class="rounded-2xl overflow-hidden shadow-2xl">
-                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Plat sain">
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 flex items-center">
+                            <span class="bg-green-100 text-green-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4"><i class="fa-solid fa-leaf"></i></span>
+                            Produits Frais & Locaux
+                        </h3>
+                        <p class="text-slate-600">Nous collaborons avec des producteurs locaux pour garantir des ingrédients de première qualité, récoltés à maturité.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 flex items-center">
+                            <span class="bg-green-100 text-green-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4"><i class="fa-solid fa-recycle"></i></span>
+                            Zéro Plastique
+                        </h3>
+                        <p class="text-slate-600">Nos box sont 100% biodégradables. Manger sain ne doit pas coûter cher à la planète.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 flex items-center">
+                            <span class="bg-green-100 text-green-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4"><i class="fa-solid fa-truck-fast"></i></span>
+                            Rapidité Digitale
+                        </h3>
+                        <p class="text-slate-600">Un parcours client optimisé : commandez en 3 clics et recevez votre repas au bureau ou à l'université.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Nos Box (Menu) -->
-    <section id="menu" class="py-20 bg-gray-100">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12">Nos Box Vedettes</h2>
+    <!-- Menu Section -->
+    <section id="menu" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Nos Healthy Box</h2>
+                <p class="text-slate-500">Conçues par des nutritionnistes, aimées par vos papilles.</p>
+            </div>
+
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Box 1 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition box-item">
-                    <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Box Énergie" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 item-name">Box Énergie</h3>
-                        <p class="text-gray-600 mb-4 text-sm">Quinoa, poulet grillé et avocat.</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-green-600 font-bold text-xl item-price">55 DH</span>
-                            <button onclick="addToCart('Box Énergie', 55)" class="bg-green-100 text-green-600 px-4 py-2 rounded-lg font-bold hover:bg-green-600 hover:text-white transition">Ajouter</button>
-                        </div>
-                    </div>
+                <!-- Box Salarié -->
+                <div class="bg-white rounded-3xl p-8 border border-slate-200 card-scale flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Box Salarié" class="rounded-2xl mb-6 h-48 w-full object-cover">
+                    <h3 class="text-xl font-bold mb-2">La Box Corporate</h3>
+                    <p class="text-slate-500 text-sm mb-6 flex-grow">L'équilibre parfait pour éviter le coup de barre de l'après-midi au bureau.</p>
+                    <div class="text-[#2D5A27] font-bold text-2xl mb-6">45 DH <span class="text-xs text-slate-400 font-normal">/ repas</span></div>
+                    <button class="w-full py-3 rounded-xl border-2 border-[#2D5A27] text-[#2D5A27] font-bold hover:bg-[#2D5A27] hover:text-white transition">Choisir cette box</button>
                 </div>
-                <!-- Box 2 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition box-item">
-                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Box Détox" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 item-name">Box Détox</h3>
-                        <p class="text-gray-600 mb-4 text-sm">Salade de kale et saumon fumé.</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-green-600 font-bold text-xl item-price">65 DH</span>
-                            <button onclick="addToCart('Box Détox', 65)" class="bg-green-100 text-green-600 px-4 py-2 rounded-lg font-bold hover:bg-green-600 hover:text-white transition">Ajouter</button>
-                        </div>
-                    </div>
+
+                <!-- Box Abonnement -->
+                <div class="bg-[#2D5A27] rounded-3xl p-8 text-white card-scale flex flex-col relative overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-yellow-400 text-slate-900 text-[10px] font-black px-3 py-1 rounded-full uppercase">Top Économie</div>
+                    <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Abonnement" class="rounded-2xl mb-6 h-48 w-full object-cover">
+                    <h3 class="text-xl font-bold mb-2">Pack Mensuel</h3>
+                    <p class="text-green-100 text-sm mb-6 flex-grow">20 repas personnalisés + coaching nutritionnel inclus. La sérénité totale.</p>
+                    <div class="text-white font-bold text-2xl mb-6">800 DH <span class="text-xs text-green-200 font-normal">/ mois</span></div>
+                    <button class="w-full py-3 rounded-xl bg-white text-[#2D5A27] font-bold hover:bg-green-50 shadow-xl transition">Je m'abonne</button>
                 </div>
-                <!-- Box 3 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition box-item">
-                    <img src="https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Box Veggie" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 item-name">Box Veggie</h3>
-                        <p class="text-gray-600 mb-4 text-sm">Falafels maison et houmous.</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-green-600 font-bold text-xl item-price">45 DH</span>
-                            <button onclick="addToCart('Box Veggie', 45)" class="bg-green-100 text-green-600 px-4 py-2 rounded-lg font-bold hover:bg-green-600 hover:text-white transition">Ajouter</button>
-                        </div>
-                    </div>
+
+                <!-- Box Étudiant -->
+                <div class="bg-white rounded-3xl p-8 border border-slate-200 card-scale flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Box Étudiant" class="rounded-2xl mb-6 h-48 w-full object-cover">
+                    <h3 class="text-xl font-bold mb-2">Le Pass Étudiant</h3>
+                    <p class="text-slate-500 text-sm mb-6 flex-grow">Petit prix, grande énergie. Pour les étudiants qui prennent soin d'eux.</p>
+                    <div class="text-[#2D5A27] font-bold text-2xl mb-6">30 DH <span class="text-xs text-slate-400 font-normal">/ repas</span></div>
+                    <button class="w-full py-3 rounded-xl border-2 border-[#2D5A27] text-[#2D5A27] font-bold hover:bg-[#2D5A27] hover:text-white transition">Profiter du tarif</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact & Commande -->
-    <section id="contact" class="py-20 bg-white">
-        <div class="container mx-auto px-4 max-w-2xl text-center">
-            <h2 class="text-3xl font-bold mb-8">Passer votre commande</h2>
-            <div class="bg-gray-50 p-8 rounded-3xl shadow-inner border border-gray-100 text-left">
-                <form id="orderForm">
-                    <div class="mb-4">
-                        <label class="block text-sm font-bold mb-2">Nom Complet</label>
-                        <input type="text" id="userName" placeholder="Votre nom" class="w-full p-3 rounded-lg border focus:ring-2 focus:ring-green-500 outline-none" required>
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-sm font-bold mb-2">Adresse à Casablanca</label>
-                        <input type="text" id="userAddress" placeholder="Votre adresse..." class="w-full p-3 rounded-lg border focus:ring-2 focus:ring-green-500 outline-none" required>
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-sm font-bold mb-2">Produit souhaité</label>
-                        <select id="productSelect" class="w-full p-3 rounded-lg border focus:ring-2 focus:ring-green-500 outline-none">
-                            <option value="Box Énergie">Box Énergie (55 DH)</option>
-                            <option value="Box Détox">Box Détox (65 DH)</option>
-                            <option value="Box Veggie">Box Veggie (45 DH)</option>
-                            <option value="Pack Salarié">Pack Salarié (250 DH)</option>
-                        </select>
-                    </div>
-                    <div id="form-message" class="hidden mb-4 p-3 bg-green-100 text-green-700 rounded-lg text-sm font-medium"></div>
-                    <button type="submit" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-green-700 transition">Confirmer ma commande</button>
-                </form>
+    <!-- Impact & SWOT Section -->
+    <section id="impact" class="py-24 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-16">Notre Impact en Chiffres</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-5xl font-bold text-[#2D5A27] mb-2">+5000</div>
+                    <p class="text-slate-500 text-sm uppercase font-bold tracking-widest">Repas servis</p>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold text-[#2D5A27] mb-2">-1.2T</div>
+                    <p class="text-slate-500 text-sm uppercase font-bold tracking-widest">Plastique évité</p>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold text-[#2D5A27] mb-2">100%</div>
+                    <p class="text-slate-500 text-sm uppercase font-bold tracking-widest">Naturel</p>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold text-[#2D5A27] mb-2">25min</div>
+                    <p class="text-slate-500 text-sm uppercase font-bold tracking-widest">Livraison moyenne</p>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="py-24 bg-slate-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 bg-white p-12 rounded-[2.5rem] shadow-xl border border-slate-100">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold mb-4">Commandez votre Box</h2>
+                <p class="text-slate-500">Un événement d'entreprise ? Une envie de tester ? Écrivez-nous.</p>
+            </div>
+            <form class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Nom complet</label>
+                        <input type="text" class="w-full px-4 py-3 rounded-xl bg-slate-50 border-transparent focus:bg-white focus:ring-2 focus:ring-[#2D5A27] transition outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Email</label>
+                        <input type="email" class="w-full px-4 py-3 rounded-xl bg-slate-50 border-transparent focus:bg-white focus:ring-2 focus:ring-[#2D5A27] transition outline-none">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold mb-2">Type d'offre souhaitée</label>
+                    <select class="w-full px-4 py-3 rounded-xl bg-slate-50 border-transparent focus:bg-white focus:ring-2 focus:ring-[#2D5A27] transition outline-none">
+                        <option>Pack Corporate (Salarié)</option>
+                        <option>Abonnement Mensuel</option>
+                        <option>Offre Étudiant</option>
+                        <option>Événement d'Entreprise</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold mb-2">Votre Message</label>
+                    <textarea rows="4" class="w-full px-4 py-3 rounded-xl bg-slate-50 border-transparent focus:bg-white focus:ring-2 focus:ring-[#2D5A27] transition outline-none"></textarea>
+                </div>
+                <button type="submit" class="w-full btn-primary text-white font-bold py-4 rounded-xl shadow-lg shadow-green-900/20">Envoyer ma demande</button>
+            </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-10 text-center">
-        <p>&copy; 2024 Greenland Box. Projet par Afaf & Samia.</p>
+    <footer class="bg-slate-900 text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-6">GREENLAND BOX</h3>
+                    <p class="text-slate-400 max-w-sm">"Votre pause rapide, 100% healthy". Rejoignez le mouvement pour une alimentation responsable au Maroc.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Réseaux Sociaux</h4>
+                    <div class="flex justify-center md:justify-start space-x-6 text-2xl">
+                        <a href="#" class="text-slate-400 hover:text-green-500 transition"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-green-500 transition"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-green-500 transition"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Contact</h4>
+                    <p class="text-slate-400 text-sm">Casablanca, Maarif</p>
+                    <p class="text-slate-400 text-sm mt-2">+212 5 22 XX XX XX</p>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 text-center text-slate-500 text-xs flex flex-col md:row justify-between">
+                <p>&copy; 2026 Greenland Box. Tous droits réservés.</p>
+                <p class="mt-2 md:mt-0 italic">Par Afaf Oussi & Samia Lamasakhar</p>
+            </div>
+        </div>
     </footer>
 
-    <!-- JAVASCRIPT -->
     <script>
-        // --- 1. Gestion du Menu Mobile ---
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            const icon = menuBtn.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
-
-        // Fermer le menu mobile lors d'un clic sur un lien
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuBtn.querySelector('i').className = 'fas fa-bars';
-            });
-        });
-
-        // --- 2. Défilement Fluide ---
-        function scrollToId(id) {
-            const element = document.getElementById(id);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        // --- 3. Gestion du Panier (Simulation) ---
-        let cartCount = 0;
-        const countDisplay = document.getElementById('cart-count');
-
-        function addToCart(name, price) {
-            cartCount++;
-            countDisplay.innerText = cartCount;
-            
-            // Animation du badge
-            countDisplay.style.transform = 'scale(1.3)';
-            setTimeout(() => {
-                countDisplay.style.transform = 'scale(1)';
-            }, 200);
-
-            // Message de confirmation rapide
-            const btn = event.target;
-            const originalText = btn.innerText;
-            btn.innerText = 'Ajouté !';
-            btn.classList.replace('bg-green-100', 'bg-green-500');
-            btn.classList.replace('text-green-600', 'text-white');
-            
-            setTimeout(() => {
-                btn.innerText = originalText;
-                btn.classList.replace('bg-green-500', 'bg-green-100');
-                btn.classList.replace('text-white', 'text-green-600');
-            }, 1000);
-        }
-
-        // --- 4. Traitement du Formulaire ---
-        const orderForm = document.getElementById('orderForm');
-        const formMsg = document.getElementById('form-message');
-
-        orderForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const name = document.getElementById('userName').value;
-            const product = document.getElementById('productSelect').value;
-
-            // Simuler l'envoi
-            formMsg.innerText = `Merci ${name} ! Votre commande de "${product}" a été enregistrée avec succès. Notre équipe vous contactera bientôt.`;
-            formMsg.classList.remove('hidden');
-            
-            // Réinitialiser le formulaire
-            orderForm.reset();
-            
-            // Cacher le message après 5 secondes
-            setTimeout(() => {
-                formMsg.classList.add('hidden');
-            }, 6000);
-        });
-
-        // --- 5. Effet de navigation active ---
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section, header');
-            const navLinks = document.querySelectorAll('.md\\:flex a');
-            
-            let current = "";
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 100) {
-                    current = section.getAttribute('id');
+        // Reveal animation on scroll
+        const observerOptions = { threshold: 0.15 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
                 }
             });
+        }, observerOptions);
 
-            navLinks.forEach(link => {
-                link.classList.remove('text-green-500', 'border-b-2', 'border-green-600');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('text-green-500');
-                }
-            });
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(section);
         });
     </script>
-
 </body>
 </html>
+
