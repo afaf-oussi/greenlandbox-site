@@ -3,241 +3,297 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greenland Box | Restauration Healthy au Maroc</title>
+    <title>Greenland Box - Votre pause rapide, 100% healthy</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        .hero-gradient {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
         }
-
-        .green-accent { color: #2D5A27; }
-        .bg-green-primary { background-color: #2D5A27; }
-        .bg-green-soft { background-color: #f0fdf4; }
+        .green-gradient { background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%); }
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background: #ef4444;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 10px;
+            font-weight: bold;
+        }
     </style>
 </head>
-<body class="bg-white text-gray-800">
+<body class="bg-gray-50 text-gray-800">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex-shrink-0 flex items-center">
-                    <span class="text-2xl font-bold tracking-tighter green-accent">GREENLAND<span class="text-gray-900">BOX</span></span>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8 text-sm font-medium">
-                        <a href="#accueil" class="hover:text-green-600 transition">Accueil</a>
-                        <a href="#concept" class="hover:text-green-600 transition">Concept</a>
-                        <a href="#offres" class="hover:text-green-600 transition">Nos Box</a>
-                        <a href="#contact" class="bg-green-primary text-white px-5 py-2 rounded-full hover:bg-green-700 transition">Commander</a>
-                    </div>
-                </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
-                        <i class="fa-solid fa-bars text-2xl"></i>
-                    </button>
-                </div>
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">GB</div>
+                <span class="text-2xl font-bold text-green-600">Greenland Box</span>
             </div>
+            
+            <!-- Menu Desktop -->
+            <div class="hidden md:flex space-x-8 font-medium items-center">
+                <a href="#accueil" class="hover:text-green-500 transition">Accueil</a>
+                <a href="#concept" class="hover:text-green-500 transition">Concept</a>
+                <a href="#menu" class="hover:text-green-500 transition">Nos Box</a>
+                <a href="#abonnements" class="hover:text-green-500 transition">Abonnements</a>
+                <div class="relative cursor-pointer mr-4" id="cart-icon">
+                    <i class="fas fa-shopping-basket text-xl text-gray-600"></i>
+                    <span id="cart-count" class="cart-badge">0</span>
+                </div>
+                <a href="#contact" class="bg-green-600 text-white px-5 py-2 rounded-full hover:bg-green-700 transition">Commander</a>
+            </div>
+
+            <!-- Bouton Mobile -->
+            <button id="menu-btn" class="md:hidden text-2xl text-green-600 focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Menu Mobile Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 flex flex-col p-4 space-y-4 shadow-lg">
+            <a href="#accueil" class="mobile-link font-medium">Accueil</a>
+            <a href="#concept" class="mobile-link font-medium">Concept</a>
+            <a href="#menu" class="mobile-link font-medium">Nos Box</a>
+            <a href="#abonnements" class="mobile-link font-medium">Abonnements</a>
+            <a href="#contact" class="mobile-link font-bold text-green-600">Commander</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="accueil" class="hero-gradient h-screen flex items-center justify-center text-center text-white px-4">
+    <header id="accueil" class="hero-bg h-[80vh] flex items-center justify-center text-center text-white px-4">
         <div class="max-w-3xl">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6">GREENLAND BOX</h1>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Mangez Sain, Vivez Mieux.</h1>
             <p class="text-xl md:text-2xl mb-8 font-light italic">"Votre pause rapide, 100% healthy"</p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#offres" class="bg-green-primary hover:bg-green-700 text-white px-8 py-4 rounded-full font-semibold transition-all">Découvrir nos menus</a>
-                <a href="#concept" class="bg-white hover:bg-gray-100 text-green-900 px-8 py-4 rounded-full font-semibold transition-all">Notre mission</a>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <button onclick="scrollToId('menu')" class="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-bold text-lg transition transform hover:scale-105">Découvrir nos Box</button>
+                <button onclick="scrollToId('concept')" class="bg-white hover:bg-gray-100 text-green-600 px-8 py-3 rounded-full font-bold text-lg transition transform hover:scale-105">Notre Concept</button>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- Présentation / Concept -->
-    <section id="concept" class="py-20 bg-green-soft">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- À Propos / Concept -->
+    <section id="concept" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">L'entreprise Greenland Box</h2>
+                <div class="w-20 h-1 bg-green-500 mx-auto"></div>
+            </div>
+            
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <h2 class="text-3xl font-bold mb-6 green-accent">Bienvenue chez Greenland Box</h2>
-                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                    <h3 class="text-2xl font-semibold mb-4 text-green-600">Notre Mission</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">
                         Greenland Box est une entreprise marocaine spécialisée dans la restauration healthy. 
                         Nous proposons des box repas saines et pratiques, préparées avec des ingrédients frais et équilibrés.
                     </p>
                     <div class="space-y-4">
                         <div class="flex items-start">
-                            <div class="mt-1 bg-green-primary p-2 rounded-lg text-white">
-                                <i class="fa-solid fa-leaf"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="font-bold">Mission</h4>
-                                <p class="text-gray-600">Offrir des repas nutritifs et savoureux qui facilitent une alimentation saine tout en respectant l’environnement.</p>
-                            </div>
+                            <i class="fas fa-leaf text-green-500 mt-1 mr-3"></i>
+                            <p><strong>Fraîcheur :</strong> Ingrédients locaux et de saison.</p>
                         </div>
                         <div class="flex items-start">
-                            <div class="mt-1 bg-green-primary p-2 rounded-lg text-white">
-                                <i class="fa-solid fa-eye"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="font-bold">Vision</h4>
-                                <p class="text-gray-600">Devenir la référence de la restauration healthy au Maroc en promouvant un mode de vie responsable.</p>
-                            </div>
+                            <i class="fas fa-recycle text-green-500 mt-1 mr-3"></i>
+                            <p><strong>Écologique :</strong> Emballages recyclables.</p>
                         </div>
                     </div>
                 </div>
-                <div class="rounded-3xl overflow-hidden shadow-2xl rotate-2">
-                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Plat sain et équilibré">
+                <div class="rounded-2xl overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Plat sain">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Nos Box (Produits) -->
-    <section id="offres" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold mb-4 green-accent">Nos Offres Phares</h2>
-            <p class="text-gray-600 mb-12 max-w-2xl mx-auto">Des solutions adaptées à chaque profil : étudiants, salariés ou entreprises.</p>
-            
+    <!-- Nos Box (Menu) -->
+    <section id="menu" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12">Nos Box Vedettes</h2>
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Box 1 -->
-                <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:-translate-y-2 transition duration-300">
-                    <div class="text-4xl mb-4">🥗</div>
-                    <h3 class="text-xl font-bold mb-2">Salarié Actif</h3>
-                    <p class="text-gray-600 text-sm mb-6">Un repas équilibré et pratique pour booster votre productivité sans lourdeur digestive.</p>
-                    <ul class="text-left text-sm space-y-2 mb-8 text-gray-500">
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Ingrédients frais du jour</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Équilibrage nutritionnel</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Livraison bureau</li>
-                    </ul>
-                    <button class="w-full py-3 rounded-xl border-2 border-green-700 text-green-700 font-bold hover:bg-green-700 hover:text-white transition">Choisir</button>
-                </div>
-
-                <!-- Box 2 - Populaire -->
-                <div class="bg-green-primary rounded-2xl shadow-xl p-8 transform scale-105 relative text-white">
-                    <span class="absolute top-0 right-0 bg-yellow-400 text-green-900 text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">POPULAIRE</span>
-                    <div class="text-4xl mb-4">🍎</div>
-                    <h3 class="text-xl font-bold mb-2 text-white">Abonnement Mensuel</h3>
-                    <p class="opacity-90 text-sm mb-6">La tranquillité d'esprit pour tout le mois. Des menus variés et personnalisés.</p>
-                    <ul class="text-left text-sm space-y-2 mb-8 opacity-90">
-                        <li><i class="fa-solid fa-check text-yellow-400 mr-2"></i> Coaching nutritionnel inclus</li>
-                        <li><i class="fa-solid fa-check text-yellow-400 mr-2"></i> Menu différent chaque jour</li>
-                        <li><i class="fa-solid fa-check text-yellow-400 mr-2"></i> Livraison prioritaire</li>
-                    </ul>
-                    <button class="w-full py-3 rounded-xl bg-white text-green-900 font-bold hover:bg-gray-100 transition">S'abonner</button>
-                </div>
-
-                <!-- Box 3 -->
-                <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:-translate-y-2 transition duration-300">
-                    <div class="text-4xl mb-4">🎓</div>
-                    <h3 class="text-xl font-bold mb-2">Offre Étudiant</h3>
-                    <p class="text-gray-600 text-sm mb-6">Manger sainement à petit prix sans perdre de temps entre deux cours.</p>
-                    <ul class="text-left text-sm space-y-2 mb-8 text-gray-500">
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Tarif réduit étudiant</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Rapide à consommer</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Énergie durable</li>
-                    </ul>
-                    <button class="w-full py-3 rounded-xl border-2 border-green-700 text-green-700 font-bold hover:bg-green-700 hover:text-white transition">Choisir</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Valeurs -->
-    <section class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-                <h3 class="text-4xl font-bold green-accent mb-2">100%</h3>
-                <p class="text-gray-500 uppercase text-xs tracking-widest">Frais & Naturel</p>
-            </div>
-            <div>
-                <h3 class="text-4xl font-bold green-accent mb-2">0</h3>
-                <p class="text-gray-500 uppercase text-xs tracking-widest">Plastique à usage unique</p>
-            </div>
-            <div>
-                <h3 class="text-4xl font-bold green-accent mb-2">Fast</h3>
-                <p class="text-gray-500 uppercase text-xs tracking-widest">Livraison Rapide</p>
-            </div>
-            <div>
-                <h3 class="text-4xl font-bold green-accent mb-2">Healthy</h3>
-                <p class="text-gray-500 uppercase text-xs tracking-widest">Mode de vie</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact & Footer -->
-    <footer id="contact" class="bg-gray-900 text-white pt-20 pb-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-3 gap-12 mb-16">
-                <div>
-                    <h3 class="text-2xl font-bold mb-6">GREENLAND BOX</h3>
-                    <p class="text-gray-400 mb-6">Votre partenaire bien-être au quotidien à travers une alimentation saine, gourmande et responsable.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-green-600 transition"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-green-600 transition"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-green-600 transition"><i class="fa-brands fa-linkedin"></i></a>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition box-item">
+                    <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Box Énergie" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 item-name">Box Énergie</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Quinoa, poulet grillé et avocat.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-600 font-bold text-xl item-price">55 DH</span>
+                            <button onclick="addToCart('Box Énergie', 55)" class="bg-green-100 text-green-600 px-4 py-2 rounded-lg font-bold hover:bg-green-600 hover:text-white transition">Ajouter</button>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-6">Contact</h4>
-                    <ul class="space-y-4 text-gray-400">
-                        <li class="flex items-center"><i class="fa-solid fa-location-dot mr-3 text-green-500"></i> Casablanca, Maroc</li>
-                        <li class="flex items-center"><i class="fa-solid fa-phone mr-3 text-green-500"></i> +212 6 XX XX XX XX</li>
-                        <li class="flex items-center"><i class="fa-solid fa-envelope mr-3 text-green-500"></i> contact@greenlandbox.ma</li>
-                    </ul>
+                <!-- Box 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition box-item">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Box Détox" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 item-name">Box Détox</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Salade de kale et saumon fumé.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-600 font-bold text-xl item-price">65 DH</span>
+                            <button onclick="addToCart('Box Détox', 65)" class="bg-green-100 text-green-600 px-4 py-2 rounded-lg font-bold hover:bg-green-600 hover:text-white transition">Ajouter</button>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-6">Newsletter</h4>
-                    <p class="text-gray-400 mb-4 text-sm">Recevez nos conseils nutrition et nos nouveaux menus chaque semaine.</p>
-                    <form class="flex">
-                        <input type="email" placeholder="Votre email" class="bg-gray-800 border-none rounded-l-lg px-4 py-3 w-full focus:ring-1 focus:ring-green-500 outline-none">
-                        <button class="bg-green-primary px-4 py-3 rounded-r-lg hover:bg-green-700 transition"><i class="fa-solid fa-paper-plane"></i></button>
-                    </form>
+                <!-- Box 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition box-item">
+                    <img src="https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Box Veggie" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 item-name">Box Veggie</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Falafels maison et houmous.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-600 font-bold text-xl item-price">45 DH</span>
+                            <button onclick="addToCart('Box Veggie', 45)" class="bg-green-100 text-green-600 px-4 py-2 rounded-lg font-bold hover:bg-green-600 hover:text-white transition">Ajouter</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
-                <p>&copy; 2024 Greenland Box. Créé par Afaf Oussi & Samia Lamasakhar. Tous droits réservés.</p>
             </div>
         </div>
+    </section>
+
+    <!-- Contact & Commande -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-2xl text-center">
+            <h2 class="text-3xl font-bold mb-8">Passer votre commande</h2>
+            <div class="bg-gray-50 p-8 rounded-3xl shadow-inner border border-gray-100 text-left">
+                <form id="orderForm">
+                    <div class="mb-4">
+                        <label class="block text-sm font-bold mb-2">Nom Complet</label>
+                        <input type="text" id="userName" placeholder="Votre nom" class="w-full p-3 rounded-lg border focus:ring-2 focus:ring-green-500 outline-none" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-bold mb-2">Adresse à Casablanca</label>
+                        <input type="text" id="userAddress" placeholder="Votre adresse..." class="w-full p-3 rounded-lg border focus:ring-2 focus:ring-green-500 outline-none" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-bold mb-2">Produit souhaité</label>
+                        <select id="productSelect" class="w-full p-3 rounded-lg border focus:ring-2 focus:ring-green-500 outline-none">
+                            <option value="Box Énergie">Box Énergie (55 DH)</option>
+                            <option value="Box Détox">Box Détox (65 DH)</option>
+                            <option value="Box Veggie">Box Veggie (45 DH)</option>
+                            <option value="Pack Salarié">Pack Salarié (250 DH)</option>
+                        </select>
+                    </div>
+                    <div id="form-message" class="hidden mb-4 p-3 bg-green-100 text-green-700 rounded-lg text-sm font-medium"></div>
+                    <button type="submit" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-green-700 transition">Confirmer ma commande</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-10 text-center">
+        <p>&copy; 2024 Greenland Box. Projet par Afaf & Samia.</p>
     </footer>
 
+    <!-- JAVASCRIPT -->
     <script>
-        // Simple Mobile Menu Toggle
-        const menuBtn = document.getElementById('mobile-menu-button');
+        // --- 1. Gestion du Menu Mobile ---
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
         menuBtn.addEventListener('click', () => {
-            // Logique de menu mobile (pourrait être étendue avec un tiroir latéral)
-            const menuIcon = menuBtn.querySelector('i');
-            menuIcon.classList.toggle('fa-bars');
-            menuIcon.classList.toggle('fa-xmark');
-            alert("Menu mobile : Imaginez ici une belle navigation latérale !");
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
         });
 
-        // Intersection Observer pour les animations au scroll
-        const observerOptions = { threshold: 0.1 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('opacity-100');
-                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+        // Fermer le menu mobile lors d'un clic sur un lien
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuBtn.querySelector('i').className = 'fas fa-bars';
+            });
+        });
+
+        // --- 2. Défilement Fluide ---
+        function scrollToId(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // --- 3. Gestion du Panier (Simulation) ---
+        let cartCount = 0;
+        const countDisplay = document.getElementById('cart-count');
+
+        function addToCart(name, price) {
+            cartCount++;
+            countDisplay.innerText = cartCount;
+            
+            // Animation du badge
+            countDisplay.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+                countDisplay.style.transform = 'scale(1)';
+            }, 200);
+
+            // Message de confirmation rapide
+            const btn = event.target;
+            const originalText = btn.innerText;
+            btn.innerText = 'Ajouté !';
+            btn.classList.replace('bg-green-100', 'bg-green-500');
+            btn.classList.replace('text-green-600', 'text-white');
+            
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.classList.replace('bg-green-500', 'bg-green-100');
+                btn.classList.replace('text-white', 'text-green-600');
+            }, 1000);
+        }
+
+        // --- 4. Traitement du Formulaire ---
+        const orderForm = document.getElementById('orderForm');
+        const formMsg = document.getElementById('form-message');
+
+        orderForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('userName').value;
+            const product = document.getElementById('productSelect').value;
+
+            // Simuler l'envoi
+            formMsg.innerText = `Merci ${name} ! Votre commande de "${product}" a été enregistrée avec succès. Notre équipe vous contactera bientôt.`;
+            formMsg.classList.remove('hidden');
+            
+            // Réinitialiser le formulaire
+            orderForm.reset();
+            
+            // Cacher le message après 5 secondes
+            setTimeout(() => {
+                formMsg.classList.add('hidden');
+            }, 6000);
+        });
+
+        // --- 5. Effet de navigation active ---
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section, header');
+            const navLinks = document.querySelectorAll('.md\\:flex a');
+            
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
                 }
             });
-        }, observerOptions);
 
-        document.querySelectorAll('section').forEach(section => {
-            section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
-            observer.observe(section);
+            navLinks.forEach(link => {
+                link.classList.remove('text-green-500', 'border-b-2', 'border-green-600');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('text-green-500');
+                }
+            });
         });
     </script>
+
 </body>
 </html>
-               
-
-
